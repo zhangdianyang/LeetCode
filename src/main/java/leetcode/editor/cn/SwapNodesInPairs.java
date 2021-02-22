@@ -46,6 +46,16 @@ public class SwapNodesInPairs {
 
     public static void main(String[] args) {
         Solution solution = new SwapNodesInPairs().new Solution();
+        ListNode node5 = new ListNode(5);
+        ListNode node4 = new ListNode(4, node5);
+        ListNode node3 = new ListNode(3, node4);
+        ListNode node2 = new ListNode(2, node3);
+        ListNode node1 = new ListNode(1, node2);
+        ListNode node = solution.swapPairs(node1);
+        while (node != null) {
+            System.out.println(node.val);
+            node = node.next;
+        }
     }
 
     //leetcode submit region begin(Prohibit modification and deletion)
@@ -61,9 +71,44 @@ public class SwapNodesInPairs {
      * }
      */
     class Solution {
+
+        // 新容器  变量交换  递归
         public ListNode swapPairs(ListNode head) {
-            return null;
+            return swapTwo(head);
         }
+
+        // 变量交换
+        private ListNode swapOne(ListNode head) {
+            ListNode pre = new ListNode(0);
+            pre.next = head;
+            ListNode a = pre;
+            ListNode b = pre;
+            ListNode t = pre;
+            while (b.next != null && b.next.next != null) {
+                a = a.next;
+                b = b.next.next;
+                // 交换
+                a.next = b.next;
+                b.next = a;
+                t.next = b;
+                // 位移
+                t = a;
+                b = a;
+            }
+            return pre.next;
+        }
+
+        // 递归
+        private ListNode swapTwo(ListNode head) {
+            if (head == null || head.next == null) {
+                return head;
+            }
+            ListNode tmp = head.next;
+            head.next = swapTwo(tmp.next);
+            tmp.next = head;
+            return tmp;
+        }
+
     }
     //leetcode submit region end(Prohibit modification and deletion)
 

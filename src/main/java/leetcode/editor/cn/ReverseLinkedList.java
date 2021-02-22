@@ -38,10 +38,12 @@ public class ReverseLinkedList {
      * }
      */
     class Solution {
+        // 新容器  变量交换  递归
         public ListNode reverseList(ListNode head) {
             return reverseTwo(head);
         }
 
+        // 递归
         private ListNode reverseOne(ListNode head) {
             if (head == null || head.next == null) {
                 return head;
@@ -52,6 +54,7 @@ public class ReverseLinkedList {
             return cur;
         }
 
+        // 变量交换
         private ListNode reverseTwo(ListNode head) {
             ListNode pre = null;
             ListNode cur = head;
@@ -59,11 +62,13 @@ public class ReverseLinkedList {
                 ListNode tmp = cur.next;
                 // 翻转
                 cur.next = pre;
+                // 位移
                 pre = cur;
                 cur = tmp;
             }
             return pre;
         }
+        
     }
     //leetcode submit region end(Prohibit modification and deletion)
 
