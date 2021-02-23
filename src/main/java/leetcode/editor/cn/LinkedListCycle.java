@@ -74,14 +74,22 @@ public class LinkedListCycle {
      * }
      */
     public class Solution {
+
+        // 新容器 快慢法
         public boolean hasCycle(ListNode head) {
             return hasCycleOne(head);
         }
 
+        // 快慢法
         private boolean hasCycleOne(ListNode head) {
-            
+            ListNode fast = head;
+            ListNode slow = head;
+            while (fast != null) {
+                
+            }
             return false;
         }
+
     }
 //leetcode submit region end(Prohibit modification and deletion)
 
