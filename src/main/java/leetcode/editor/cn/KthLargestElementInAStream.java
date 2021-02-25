@@ -70,16 +70,16 @@ public class KthLargestElementInAStream {
         public KthLargest(int k, int[] nums) {
             this.k = k;
             for (int num : nums) {
-                System.out.println(add(num));
+                add(num);
             }
         }
 
         public int add(int val) {
-            queue.offer(val);
+            queue.add(val);
             if (queue.size() > k) {
                 queue.poll();
             }
-            return queue.peek() != null ? queue.peek() : 0;
+            return queue.peek();
         }
 
     }
