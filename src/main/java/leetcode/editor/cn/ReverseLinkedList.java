@@ -21,8 +21,12 @@ public class ReverseLinkedList {
         ListNode node3 = new ListNode(3, node4);
         ListNode node2 = new ListNode(2, node3);
         ListNode node1 = new ListNode(1, node2);
-        ListNode node = solution.reverseList(node1);
-        System.out.println(node.val);
+        ListNode node = solution.reverseTwo(node1);
+        ListNode tmp = node;
+        while (tmp != null) {
+            System.out.println(tmp.val);
+            tmp = tmp.next;
+        }
     }
 
     //leetcode submit region begin(Prohibit modification and deletion)
@@ -68,7 +72,19 @@ public class ReverseLinkedList {
             }
             return pre;
         }
-        
+
+        private ListNode reverseThree(ListNode head) {
+            ListNode pre = new ListNode(0, head);
+            ListNode cur = head;
+            while (cur != null) {
+                ListNode tmp = cur.next;
+                cur.next = pre;
+                pre = cur;
+                cur = tmp;
+            }
+            return pre;
+        }
+
     }
     //leetcode submit region end(Prohibit modification and deletion)
 
